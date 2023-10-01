@@ -1,0 +1,9 @@
+# Version of docker compose:
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    container_name: mobbingtagebuch_c1
+    ports: 
+      - '80:80'
