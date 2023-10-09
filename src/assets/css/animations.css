@@ -1,0 +1,120 @@
+/* Some basic and smooth animations */
+.animate-top-in {
+    position: relative;
+    animation: animatetopin 0.3s;
+}
+@keyframes animatetopin {
+    from {
+        top: -20px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.animate-top-out {
+    position: relative;
+    animation: animatetopout 0.3s;
+}
+@keyframes animatetopout {
+    from {
+        top: 0;
+        opacity: 1;
+    }
+    to {
+        top: -20px;
+        opacity: 0;
+    }
+}
+
+.animate-left-in {
+    position: relative;
+    animation: animateleftin 0.3s;
+}
+@keyframes animateleftin {
+    from {
+        left: -20px;
+        opacity: 0;
+    }
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.animate-left-out {
+    position: relative;
+    animation: animateleftout 0.3s;
+}
+@keyframes animateleftout {
+    from {
+        left: 0;
+        opacity: 1;
+    }
+    to {
+        left: -20px;
+        opacity: 0;
+    }
+}
+
+.animate-right-in {
+    position: relative;
+    animation: animaterightin 0.3s;
+}
+@keyframes animaterightin {
+    from {
+        right: -30px;
+        opacity: 0;
+    }
+    to {
+        right: 0;
+        opacity: 1;
+    }
+}
+
+.animate-right-out {
+    position: relative;
+    animation: animaterightout 0.3s;
+}
+@keyframes animaterightout {
+    from {
+        right: 0;
+        opacity: 1;
+    }
+    to {
+        right: -30px;
+        opacity: 0;
+    }
+}
+
+.animate-bottom-in {
+    position: relative;
+    animation: animatebottomin 0.3s;
+}
+@keyframes animatebottomin {
+    from {
+        bottom: -30px;
+        opacity: 0;
+    }
+    to {
+        bottom: 0;
+        opacity: 1;
+    }
+}
+
+.animate-bottom-out {
+    position: relative;
+    animation: animatebottomout 0.3s;
+}
+@keyframes animatebottomout {
+    from {
+        bottom: 0;
+        opacity: 1;
+    }
+    to {
+        bottom: -30px;
+        opacity: 0;
+    }
+}
