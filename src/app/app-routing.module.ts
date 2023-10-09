@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
+import { SomethingWentWrongComponent } from './shared/pages/something-went-wrong/something-went-wrong.component';
+import { NoProjectSelectedComponent } from './shared/pages/no-project-selected/no-project-selected.component';
+import { CustomErrorComponent } from './shared/pages/custom-error/custom-error.component';
 
 const routes: Routes = [
     {
@@ -41,6 +45,31 @@ const routes: Routes = [
         path: 'reports',
         loadChildren: () =>
             import('./reports/reports.module').then((m) => m.ReportsModule),
+    },
+    {
+        path: 'errors',
+        children: [
+            {
+                path: 'not-found',
+                component: NotFoundComponent,
+                title: '404',
+            },
+            {
+                path: 'unspecified-error',
+                component: SomethingWentWrongComponent,
+                title: 'Unknown Error',
+            },
+            {
+                path: 'no-project',
+                component: NoProjectSelectedComponent,
+                title: 'No project selected',
+            },
+            {
+                path: 'custom-error',
+                component: CustomErrorComponent,
+                title: 'Custom Error',
+            },
+        ],
     },
 ];
 
