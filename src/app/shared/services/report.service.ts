@@ -7,15 +7,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ReportService {
     private reports: Report[] = [];
-    private reportsSubject = new BehaviorSubject<Report[]>([]);
+    private reportsSubject$ = new BehaviorSubject<Report[]>([]);
 
     getReports(): Observable<Report[]> {
-        return this.reportsSubject.asObservable();
+        return this.reportsSubject$.asObservable();
     }
 
     addReport(report: Report): void {
         this.reports.push(report);
-        this.reportsSubject.next(this.reports);
+        this.reportsSubject$.next(this.reports);
     }
 
     updateReport(updatedReport: Report): void {
@@ -24,17 +24,17 @@ export class ReportService {
         );
         if (index !== -1) {
             this.reports[index] = updatedReport;
-            this.reportsSubject.next([...this.reports]);
+            this.reportsSubject$.next([...this.reports]);
         }
     }
 
     deleteReport(reportId: string): void {
         this.reports = this.reports.filter((report) => report.id !== reportId);
-        this.reportsSubject.next(this.reports);
+        this.reportsSubject$.next(this.reports);
     }
 
     updateProjectReports(newReports: Report[]): void {
         this.reports = newReports;
-        this.reportsSubject.next(this.reports);
+        this.reportsSubject$.next(this.reports);
     }
 }
