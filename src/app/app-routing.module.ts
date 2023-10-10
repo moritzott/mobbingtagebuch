@@ -4,6 +4,7 @@ import { NotFoundComponent } from './shared/pages/not-found/not-found.component'
 import { SomethingWentWrongComponent } from './shared/pages/something-went-wrong/something-went-wrong.component';
 import { NoProjectSelectedComponent } from './shared/pages/no-project-selected/no-project-selected.component';
 import { CustomErrorComponent } from './shared/pages/custom-error/custom-error.component';
+import { hasProjectSelectedGuard } from './shared/guards/has-project-selected.guard';
 
 const routes: Routes = [
     {
@@ -13,6 +14,7 @@ const routes: Routes = [
     },
     {
         path: 'export',
+        canActivate: [hasProjectSelectedGuard],
         loadChildren: () =>
             import('./export/export.module').then((m) => m.ExportModule),
     },
@@ -37,14 +39,21 @@ const routes: Routes = [
             import('./info/info.module').then((m) => m.InfoModule),
     },
     {
-        path: 'report',
-        loadChildren: () =>
-            import('./report/report.module').then((m) => m.ReportModule),
-    },
-    {
         path: 'reports',
+        canActivate: [hasProjectSelectedGuard],
         loadChildren: () =>
             import('./reports/reports.module').then((m) => m.ReportsModule),
+    },
+    {
+        path: 'persons',
+        canActivate: [hasProjectSelectedGuard],
+        loadChildren: () =>
+            import('./persons/persons.module').then((m) => m.PersonsModule),
+    },
+    {
+        path: 'projects',
+        loadChildren: () =>
+            import('./projects/projects.module').then((m) => m.ProjectsModule),
     },
     {
         path: 'errors',

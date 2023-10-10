@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OverviewComponent } from './pages/overview/overview.component';
-import { NewReportComponent } from './pages/new-report/new-report.component';
+import { NewPersonComponent } from './pages/new-person/new-person.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -11,7 +11,7 @@ const routes: Routes = [
     },
     {
         path: 'new',
-        component: NewReportComponent,
+        component: NewPersonComponent,
     },
 ];
 
@@ -19,4 +19,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class ReportsRoutingModule {}
+export class PersonsRoutingModule {}

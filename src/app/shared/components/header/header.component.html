@@ -1,7 +1,7 @@
 <nav class="navbar py-4">
     <div class="container is-fluid">
         <div class="navbar-brand">
-            <a class="navbar-item" href="#">
+            <a class="navbar-item" routerLink="/home">
                 <b>Mobbingtagebuch</b>
             </a>
             <a
@@ -20,33 +20,47 @@
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Projekte</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Neues Projekt</a>
-                        <a class="navbar-item">Übersicht</a>
+                        <a class="navbar-item" routerLink="/projects/new"
+                            >Neues Projekt</a
+                        >
+                        <a class="navbar-item" routerLink="/projects/overview"
+                            >Übersicht</a
+                        >
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Personen</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Neue Person</a>
-                        <a class="navbar-item">Übersicht</a>
+                        <a class="navbar-item" routerLink="/persons/new"
+                            >Neue Person</a
+                        >
+                        <a class="navbar-item" routerLink="/persons/overview"
+                            >Übersicht</a
+                        >
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Berichte</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Neuer Bericht</a>
-                        <a class="navbar-item">Übersicht</a>
+                        <a class="navbar-item" routerLink="/reports/new"
+                            >Neuer Bericht</a
+                        >
+                        <a class="navbar-item" routerLink="/reports/overview"
+                            >Übersicht</a
+                        >
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">Export</a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">Datei</a>
-                        <a class="navbar-item">PDF</a>
+                        <a class="navbar-item" routerLink="/export/file"
+                            >Datei</a
+                        >
+                        <a class="navbar-item" routerLink="/export/pdf">PDF</a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">Import</a>
+                    <a class="navbar-link" outerLink="/import">Import</a>
                     <div class="navbar-dropdown">
                         <a class="navbar-item">Datei</a>
                     </div>
@@ -85,6 +99,3 @@
         </div>
     </div>
 </nav>
-
-
-
