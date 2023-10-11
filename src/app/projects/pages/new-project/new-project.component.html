@@ -1,1 +1,42 @@
-<p>new-project works!</p>
+<div class="animate-left-in">
+    <div class="explanation-container mt-6">
+        <h1 class="title">Neues Projekt anlegen</h1>
+        <div class="block">
+            <p>
+                Projekte dienen dazu einen Mobbingfall in Gänze darszutellen.
+                Wollen Sie einen Mobbingfall in diesem Tagebuch begleiten, so
+                legen Sie zuerst ein Projekt. Darin werden dann alle Personen
+                und Berichte abgespeichert. Es ist ebenso möglich mehrer
+                Projekte anzulegen, sowie die Projekte zu bearbeitne oder zu
+                löschen.
+            </p>
+        </div>
+    </div>
+
+    <div class="form-container is-vcentered mt-5">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="Text input" />
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Beschreibung (optional)</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="field mt-4 is-grouped is-flex is-justify-content-end">
+            <div class="control">
+                <button routerLink="/home" class="button is-link is-light">
+                    Abbrechen
+                </button>
+            </div>
+            <div class="control">
+                <button class="button is-link">Anlegen</button>
+            </div>
+        </div>
+    </div>
+</div>
