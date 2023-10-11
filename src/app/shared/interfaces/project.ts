@@ -6,6 +6,8 @@ import { Report } from "./report";
 
 export interface Project {
     id: string,
+    title: string,
+    description?: string,
     language: Language,
     reports: Report[],
     people: Person[],
