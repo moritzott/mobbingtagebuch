@@ -1,3 +1,11 @@
 {
-    "conventionalCommits.scopes": ["app", "export", "import", "settings"]
+    "conventionalCommits.scopes": [
+        "app",
+        "export",
+        "import",
+        "settings",
+        "projects",
+        "reports",
+        "persons"
+    ]
 }
