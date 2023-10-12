@@ -1,5 +1,6 @@
 <div class="animate-left-in">
     <div class="explanation-container mt-6">
+        <!-- title with description -->
         <h1 class="title">Neues Projekt anlegen</h1>
         <div class="block">
             <p>
@@ -12,31 +13,68 @@
             </p>
         </div>
     </div>
+    <!-- the F O R M -->
+    <form (ngSubmit)="onSubmit(projectForm)" #projectForm="ngForm">
+        <div class="form-container is-vcentered mt-5">
+            <!-- the new projects name -->
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        name="projectName"
+                        id="projectName"
+                        placeholder="Text input"
+                        [(ngModel)]="projectName"
+                        #projectname="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger':
+                                projectname.dirty && projectname.invalid
+                        }"
+                    />
+                </div>
+                <!-- info text that the name is required -->
+                <p
+                    *ngIf="projectname.dirty && projectname.invalid"
+                    class="help is-danger"
+                >
+                    A name is required.
+                </p>
+            </div>
 
-    <div class="form-container is-vcentered mt-5">
-        <div class="field">
-            <label class="label">Name</label>
-            <div class="control">
-                <input class="input" type="text" placeholder="Text input" />
+            <!-- the optional project description -->
+            <div class="field">
+                <label class="label">Beschreibung (optional)</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="projectDescription"
+                        name="projectDescription"
+                        [(ngModel)]="projectDescription"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the cancel and submit button -->
+            <div class="field mt-4 is-grouped is-flex is-justify-content-end">
+                <div class="control">
+                    <button routerLink="/home" class="button is-link is-light">
+                        Abbrechen
+                    </button>
+                </div>
+                <div class="control">
+                    <button
+                        type="submit"
+                        [disabled]="projectForm.form.invalid"
+                        class="button is-link"
+                    >
+                        Anlegen
+                    </button>
+                </div>
             </div>
         </div>
-
-        <div class="field">
-            <label class="label">Beschreibung (optional)</label>
-            <div class="control">
-                <textarea class="textarea" placeholder="Textarea"></textarea>
-            </div>
-        </div>
-
-        <div class="field mt-4 is-grouped is-flex is-justify-content-end">
-            <div class="control">
-                <button routerLink="/home" class="button is-link is-light">
-                    Abbrechen
-                </button>
-            </div>
-            <div class="control">
-                <button class="button is-link">Anlegen</button>
-            </div>
-        </div>
-    </div>
+    </form>
 </div>

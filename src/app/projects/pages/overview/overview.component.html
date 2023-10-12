@@ -8,6 +8,15 @@
             </p>
         </div>
     </div>
+    <div>
+        <ul>
+            <li *ngFor="let project of projects">
+                <p>ID: {{ project.id }}</p>
+                <p>Titel: {{ project.title }}</p>
+                <p>Beschreibung: {{ project.description }}</p>
+            </li>
+        </ul>
+    </div>
     <div class="empty-container my-6">
         <h2 class="subtitle">Keine Projekte.</h2>
         <div class="block">

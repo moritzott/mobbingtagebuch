@@ -6,11 +6,20 @@
         Geben Sie einfach den Namen eines neuen Projekts ein und schon kann es
         losgehen.
     </p>
-    <form>
+    <form (ngSubmit)="onSubmit(shortForm)" #shortForm="ngForm">
         <input
+            required
             class="input mb-3"
-            type="email"
+            type="text"
             placeholder="Projektname"
-        /><button class="button is-link is-fullwidth">Los geht's</button>
+            id="projectName"
+            name="projectName"
+            [(ngModel)]="projectName"
+            #projectname="ngModel"
+            [ngClass]="{
+                'is-danger': projectname.dirty && projectname.invalid
+            }"
+        />
+        <button class="button is-link is-fullwidth">Los geht's</button>
     </form>
 </div>
