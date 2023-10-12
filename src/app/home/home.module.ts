@@ -6,6 +6,7 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from '../shared/shared.module';
 import { HeroComponent } from './component/hero/hero.component';
 import { NewProjectCardComponent } from './component/new-project-card/new-project-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NewProjectCardComponent } from './component/new-project-card/new-projec
   imports: [
     CommonModule,
     HomeRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
