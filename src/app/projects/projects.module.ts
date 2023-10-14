@@ -7,6 +7,7 @@ import { OverviewComponent } from './pages/overview/overview.component';
 import { NewProjectComponent } from './pages/new-project/new-project.component';
 import { FormsModule } from '@angular/forms';
 import { EditProjectComponent } from './pages/edit-project/edit-project.component';
+import { ReadProjectComponent } from './pages/read-project/read-project.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { EditProjectComponent } from './pages/edit-project/edit-project.componen
     ProjectsComponent,
     OverviewComponent,
     NewProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    ReadProjectComponent
   ],
   imports: [
     CommonModule,

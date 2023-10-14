@@ -42,6 +42,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
         this.router.navigate(['projects', "edit"])
     }
 
+    readProject(project: Project): void {
+        this.projectService.selectProject(project);
+        this.router.navigate(['projects', "read"])
+    }
+
     selectProject(project: Project): void {
         this.projectService.selectProject(project);
     }
