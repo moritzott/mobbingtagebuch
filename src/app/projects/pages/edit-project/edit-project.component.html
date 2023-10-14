@@ -50,7 +50,7 @@
         <!-- the cancel and submit button -->
         <div class="field mt-4 is-grouped is-flex is-justify-content-end">
             <div class="control">
-                <button routerLink="/projects/overview" class="button is-link is-light">
+                <button routerLink="/projects/overview" class="button is-primary is-light">
                     Abbrechen
                 </button>
             </div>
@@ -58,7 +58,7 @@
                 <button
                     type="submit"
                     [disabled]="projectForm.form.invalid"
-                    class="button is-link"
+                    class="button is-primary"
                 >
                     Anlegen
                 </button>
@@ -72,7 +72,7 @@
     <!-- show loadingbar when we dont have yet a project from the servcie -->
     <div class="my-6" *ngIf="project === undefined">
         <div class="block">
-            <progress class="progress is-small is-link" max="100"></progress>
+            <progress class="progress is-small is-primary" max="100"></progress>
         </div>
     </div>
 </div>

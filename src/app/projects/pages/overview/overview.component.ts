@@ -13,16 +13,24 @@ export class OverviewComponent implements OnInit, OnDestroy {
     projects!: Project[];
     projectSubscription$!: Subscription;
 
+    selectedProject: Project | undefined = undefined;
+    selectedProjectSubscription$!: Subscription;
+
     constructor(private projectService: ProjectService, private router: Router) { }
 
     ngOnInit(): void {
         this.projectSubscription$ = this.projectService
             .getProjects()
             .subscribe((values) => (this.projects = values));
+
+        this.selectedProjectSubscription$ = this.projectService.
+            getSelectedProject()
+            .subscribe((project) => this.selectedProject = project);
     }
 
     ngOnDestroy(): void {
         this.projectSubscription$.unsubscribe();
+        this.selectedProjectSubscription$.unsubscribe();
     }
 
     deleteProject(id: string): void {
@@ -32,5 +40,9 @@ export class OverviewComponent implements OnInit, OnDestroy {
     editProject(project: Project): void {
         this.projectService.selectProject(project);
         this.router.navigate(['projects', "edit"])
+    }
+
+    selectProject(project: Project): void {
+        this.projectService.selectProject(project);
     }
 }

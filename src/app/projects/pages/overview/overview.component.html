@@ -11,27 +11,32 @@
     <!-- if there are projects, show them in a table -->
     <div *ngIf="projects.length !== 0">
         <div class="table-container mt-2">
-            <table class="table is-fullwidth">
+            <table class="table is-hoverable is-fullwidth">
                 <tr>
                     <th>Name</th>
                     <th>Beschreibung</th>
                     <th>Aktion</th>
                 </tr>
-                <tr *ngFor="let project of projects">
+                <tr
+                    *ngFor="let project of projects"
+                    class="pointer"
+                    [ngClass]="{ 'is-selected': selectedProject === project }"
+                    (click)="selectProject(project)"
+                >
                     <td class="pt-4">{{ project.title }}</td>
                     <td class="pt-4">{{ project.description }}</td>
                     <td>
-                        <button class="button is-link is-light mr-2">
+                        <button class="button is-primary is-light mr-2">
                             <span class="material-icons"> text_snippet </span>
                         </button>
                         <button
-                            class="button is-link is-light mr-2"
+                            class="button is-primary is-light mr-2"
                             (click)="editProject(project)"
                         >
                             <span class="material-icons"> edit </span>
                         </button>
                         <button
-                            class="button is-link is-light"
+                            class="button is-primary is-light"
                             (click)="deleteProject(project.id)"
                         >
                             <span class="material-icons"> delete </span>

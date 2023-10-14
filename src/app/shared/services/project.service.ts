@@ -42,6 +42,13 @@ export class ProjectService {
     deleteProject(projectId: string): void {
         this.projects = this.projects.filter((p) => p.id !== projectId);
         this.projectsSubject$.next([...this.projects]);
+
+        // remove selected project if the project to be removed is the currently selected one:
+        const deletedProjectWasSelectedProject: boolean = this.projects.some((project) => project === this.selectedProject)
+        if (deletedProjectWasSelectedProject === false) {
+            this.selectedProject = undefined;
+            this.selectedProject$.next(this.selectedProject);
+        }
     }
 
     getProject(projectId: string): Project | undefined {
