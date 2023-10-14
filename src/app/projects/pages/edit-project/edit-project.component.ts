@@ -18,7 +18,9 @@ export class EditProjectComponent implements OnInit, OnDestroy {
   projectSubscription$!: Subscription;
 
   ngOnInit(): void {
-    this.projectSubscription$ = this.projectService.getSelectedProject().subscribe(project => this.project = project);
+    this.projectSubscription$ = this.projectService
+      .getSelectedProject()
+      .subscribe(project => this.project = JSON.parse(JSON.stringify(project))); // make a deep copy (in case we want to cancel, the 2-way-binding will not override the data Bugfix #59)
   }
 
   onSubmit(form: NgForm): void {
