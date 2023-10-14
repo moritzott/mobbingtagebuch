@@ -18,7 +18,7 @@ export class ProjectService {
     constructor(
         private personsService: PersonService,
         private reportsService: ReportService
-    ) {}
+    ) { }
 
     getProjects(): Observable<Project[]> {
         return this.projectsSubject$.asObservable();
@@ -35,7 +35,7 @@ export class ProjectService {
         );
         if (index !== -1) {
             this.projects[index] = updatedProject;
-            this.projectsSubject$.next([...this.projects]);
+            this.projectsSubject$.next(this.projects);
         }
     }
 

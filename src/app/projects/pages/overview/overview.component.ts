@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/shared/interfaces/project';
 import { ProjectService } from 'src/app/shared/services/project.service';
@@ -12,7 +13,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     projects!: Project[];
     projectSubscription$!: Subscription;
 
-    constructor(private projectService: ProjectService) {}
+    constructor(private projectService: ProjectService, private router: Router) { }
 
     ngOnInit(): void {
         this.projectSubscription$ = this.projectService
@@ -26,5 +27,10 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
     deleteProject(id: string): void {
         this.projectService.deleteProject(id);
+    }
+
+    editProject(project: Project): void {
+        this.projectService.selectProject(project);
+        this.router.navigate(['projects', "edit"])
     }
 }
