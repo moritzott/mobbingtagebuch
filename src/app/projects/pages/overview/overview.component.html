@@ -27,7 +27,10 @@
                         <button class="button is-link is-light mr-2">
                             <span class="material-icons"> edit </span>
                         </button>
-                        <button class="button is-link is-light">
+                        <button
+                            class="button is-link is-light"
+                            (click)="deleteProject(project.id)"
+                        >
                             <span class="material-icons"> delete </span>
                         </button>
                     </td>

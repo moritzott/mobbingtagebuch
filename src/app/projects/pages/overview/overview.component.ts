@@ -23,4 +23,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.projectSubscription$.unsubscribe();
     }
+
+    deleteProject(id: string): void {
+        this.projectService.deleteProject(id);
+    }
 }
