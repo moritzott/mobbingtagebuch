@@ -26,7 +26,10 @@
                     <td class="pt-4">{{ project.title }}</td>
                     <td class="pt-4">{{ project.description }}</td>
                     <td>
-                        <button class="button is-primary is-light mr-2">
+                        <button
+                            class="button is-primary is-light mr-2"
+                            (click)="readProject(project)"
+                        >
                             <span class="material-icons"> text_snippet </span>
                         </button>
                         <button
