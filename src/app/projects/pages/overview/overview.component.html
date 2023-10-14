@@ -8,16 +8,35 @@
             </p>
         </div>
     </div>
-    <div>
-        <ul>
-            <li *ngFor="let project of projects">
-                <p>ID: {{ project.id }}</p>
-                <p>Titel: {{ project.title }}</p>
-                <p>Beschreibung: {{ project.description }}</p>
-            </li>
-        </ul>
+    <!-- if there are projects, show them in a table -->
+    <div *ngIf="projects.length !== 0">
+        <div class="table-container mt-2">
+            <table class="table is-fullwidth">
+                <tr>
+                    <th>Name</th>
+                    <th>Beschreibung</th>
+                    <th>Aktion</th>
+                </tr>
+                <tr *ngFor="let project of projects">
+                    <td class="pt-4">{{ project.title }}</td>
+                    <td class="pt-4">{{ project.description }}</td>
+                    <td>
+                        <button class="button is-link is-light mr-2">
+                            <span class="material-icons"> text_snippet </span>
+                        </button>
+                        <button class="button is-link is-light mr-2">
+                            <span class="material-icons"> edit </span>
+                        </button>
+                        <button class="button is-link is-light">
+                            <span class="material-icons"> delete </span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="empty-container my-6">
+    <!-- when no projects are available: show info text with link to create a project -->
+    <div class="empty-container my-6" *ngIf="projects.length === 0">
         <h2 class="subtitle">Keine Projekte.</h2>
         <div class="block">
             <p>
