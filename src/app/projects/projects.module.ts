@@ -6,13 +6,15 @@ import { ProjectsComponent } from './projects.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { NewProjectComponent } from './pages/new-project/new-project.component';
 import { FormsModule } from '@angular/forms';
+import { EditProjectComponent } from './pages/edit-project/edit-project.component';
 
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     OverviewComponent,
-    NewProjectComponent
+    NewProjectComponent,
+    EditProjectComponent
   ],
   imports: [
     CommonModule,
