@@ -1,1 +1,91 @@
-<p>new-person works!</p>
+<div class="animate-left-in">
+    <div class="explanation-container mt-6">
+        <!-- title with description -->
+        <h1 class="title">Neue Person anlegen</h1>
+        <div class="block">
+            <p>
+                Eine Person wird angelegt, wenn Sie in Ihrem Mobbingfall eine
+                Rolle spielt (sowohl als Täter wie Zeuge, positiv wie negativ).
+            </p>
+        </div>
+    </div>
+    <!-- the F O R M -->
+    <form (ngSubmit)="onSubmit(personForm)" #personForm="ngForm">
+        <div class="form-container is-vcentered mt-5">
+            <!-- the new person name -->
+            <div class="field">
+                <label class="label">Vorname</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        name="firstName"
+                        id="firstName"
+                        placeholder="Text input"
+                        [(ngModel)]="firstname"
+                        #firstName="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger': firstName.dirty && firstName.invalid
+                        }"
+                    />
+                </div>
+                <!-- info text that the name is required -->
+                <p
+                    *ngIf="firstName.dirty && firstName.invalid"
+                    class="help is-danger"
+                >
+                    A firstname is required.
+                </p>
+            </div>
+
+            <!-- the lastname -->
+            <div class="field">
+                <label class="label">Nachname</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="text"
+                        name="lastname"
+                        id="lastname"
+                        placeholder="Text input"
+                        [(ngModel)]="lastname"
+                        #lastName="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger': lastName.dirty && lastName.invalid
+                        }"
+                    />
+                </div>
+                <!-- info text that the name is required -->
+                <p
+                    *ngIf="lastName.dirty && lastName.invalid"
+                    class="help is-danger"
+                >
+                    A lastname is required.
+                </p>
+            </div>
+
+            <!-- the cancel and submit button -->
+            <div class="field mt-4 is-grouped is-flex is-justify-content-end">
+                <div class="control">
+                    <button
+                        routerLink="/persons/overview"
+                        class="button is-primary is-light"
+                    >
+                        Abbrechen
+                    </button>
+                </div>
+                <div class="control">
+                    <button
+                        type="submit"
+                        [disabled]="personForm.form.invalid"
+                        class="button is-primary"
+                    >
+                        Anlegen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
