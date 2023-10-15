@@ -46,8 +46,8 @@ export class PersonService {
         this.selectedPerson$.next(this.selectedPerson);
     }
 
-    getSelectedPerson(): BehaviorSubject<Person | undefined> {
-        return this.selectedPerson$;
+    getSelectedPerson(): Observable<Person | undefined> {
+        return this.selectedPerson$.asObservable();
     }
 
     updateProjectPeople(newPeople: Person[]): void {

@@ -56,8 +56,8 @@ export class ProjectService {
         return this.projects[index];
     }
 
-    getSelectedProject(): BehaviorSubject<Project | undefined> {
-        return this.selectedProject$;
+    getSelectedProject(): Observable<Project | undefined> {
+        return this.selectedProject$.asObservable();
     }
 
     selectProject(project: Project): void {
