@@ -8,6 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class PersonService {
     private people: Person[] = [];
     private peopleSubject$ = new BehaviorSubject<Person[]>([]);
+    private selectedPerson: Person | undefined = undefined;
+    private selectedPerson$ = new BehaviorSubject<Person | undefined>(undefined);
 
     getPeople(): Observable<Person[]> {
         return this.peopleSubject$.asObservable();
@@ -29,6 +31,23 @@ export class PersonService {
     deletePerson(personId: string): void {
         this.people = this.people.filter((p) => p.id !== personId);
         this.peopleSubject$.next([...this.people]);
+
+        // remove selected person if the person to be removed is the currently selected one:
+        const deletedPersonWasSelectedPerson: boolean = this.people.some((person) => person === this.selectedPerson)
+        if (deletedPersonWasSelectedPerson === false) {
+            this.selectedPerson = undefined;
+            this.selectedPerson$.next(this.selectedPerson);
+        }
+
+    }
+
+    selectPerson(person: Person): void {
+        this.selectedPerson = person;
+        this.selectedPerson$.next(this.selectedPerson);
+    }
+
+    getSelectedPerson(): BehaviorSubject<Person | undefined> {
+        return this.selectedPerson$;
     }
 
     updateProjectPeople(newPeople: Person[]): void {

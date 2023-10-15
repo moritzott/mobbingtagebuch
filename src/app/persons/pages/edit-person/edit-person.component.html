@@ -1,0 +1,96 @@
+<div class="content-container animate-right-in">
+    <div class="my-6" *ngIf="person !== undefined">
+        <h1 class="title">Projekt bearbeiten</h1>
+        <div class="block">
+            <!-- the F O R M -->
+            <form (ngSubmit)="onSubmit(personForm)" #personForm="ngForm">
+                <div class="form-container is-vcentered mt-5">
+                    <!-- the new projects name -->
+                    <div class="field">
+                        <label class="label">Vorname</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                type="text"
+                                name="firstname"
+                                id="firstname"
+                                placeholder="Text input"
+                                [(ngModel)]="person.firstname"
+                                #firstName="ngModel"
+                                required
+                                [ngClass]="{
+                                    'is-danger':
+                                    firstName.dirty && firstName.invalid
+                                }"
+                            />
+                        </div>
+                        <!-- info text that the name is required -->
+                        <p
+                            *ngIf="firstName.dirty && firstName.invalid"
+                            class="help is-danger"
+                        >
+                            A name is required.
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Nachname</label>
+                        <div class="control">
+                            <input
+                                class="input"
+                                type="text"
+                                name="lastname"
+                                id="lastname"
+                                placeholder="Text input"
+                                [(ngModel)]="person.lastname"
+                                #lastName="ngModel"
+                                required
+                                [ngClass]="{
+                                    'is-danger':
+                                    lastName.dirty && lastName.invalid
+                                }"
+                            />
+                        </div>
+                        <!-- info text that the name is required -->
+                        <p
+                            *ngIf="lastName.dirty && lastName.invalid"
+                            class="help is-danger"
+                        >
+                            A name is required.
+                        </p>
+                    </div>
+
+                    <!-- the cancel and submit button -->
+                    <div
+                        class="field mt-4 is-grouped is-flex is-justify-content-end"
+                    >
+                        <div class="control">
+                            <button
+                                routerLink="/persons/overview"
+                                class="button is-primary is-light"
+                            >
+                                Abbrechen
+                            </button>
+                        </div>
+                        <div class="control">
+                            <button
+                                type="submit"
+                                [disabled]="personForm.form.invalid"
+                                class="button is-primary"
+                            >
+                                Aktualisieren
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- show loadingbar when we dont have yet a person from the servcie -->
+    <div class="my-6" *ngIf="person === undefined">
+        <div class="block">
+            <progress class="progress is-small is-primary" max="100"></progress>
+        </div>
+    </div>
+</div>

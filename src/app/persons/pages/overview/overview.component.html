@@ -1,1 +1,64 @@
-<p>overview works!</p>
+<div class="animate-right-in">
+    <div class="explanation-container mt-6">
+        <h1 class="title">Personenübersicht</h1>
+        <div class="block">
+            <p>
+                Die Personenübersicht dient zum Erstellen und Bearbeiten von
+                Personen, die an Ihrem Mobbingfall beteilit sind.
+            </p>
+        </div>
+    </div>
+    <!-- if there are persons, show them in a table -->
+    <div *ngIf="persons.length !== 0">
+        <div class="table-container mt-2">
+            <table class="table is-hoverable is-fullwidth">
+                <tr>
+                    <th>Vorname</th>
+                    <th>Nachname</th>
+                    <th>Aktion</th>
+                </tr>
+                <tr
+                    *ngFor="let person of persons"
+                    class="pointer"
+                    [ngClass]="{ 'is-selected': selectedPerson === person }"
+                    (click)="selectPerson(person)"
+                >
+                    <td class="pt-4">{{ person.firstname }}</td>
+                    <td class="pt-4">{{ person.lastname }}</td>
+                    <td>
+                        <button
+                            class="button is-primary is-light mr-2"
+                            (click)="readPerson(person)"
+                        >
+                            <span class="material-icons"> text_snippet </span>
+                        </button>
+                        <button
+                            class="button is-primary is-light mr-2"
+                            (click)="editPerson(person)"
+                        >
+                            <span class="material-icons"> edit </span>
+                        </button>
+                        <button
+                            class="button is-primary is-light"
+                            (click)="deletePerson(person.id)"
+                        >
+                            <span class="material-icons"> delete </span>
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- when no projects are available: show info text with link to create a project -->
+    <div class="empty-container my-6" *ngIf="persons.length === 0">
+        <h2 class="subtitle">Keine Personen.</h2>
+        <div class="block">
+            <p>
+                Es sieht so aus als haben Sie keine Personen bislang angelegt.
+                <a class="is-ghost" routerLink="/persons/new"
+                    >Legen Sie am besten eine an.</a
+                >
+            </p>
+        </div>
+    </div>
+</div>

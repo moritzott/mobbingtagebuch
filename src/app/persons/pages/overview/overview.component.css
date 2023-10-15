@@ -1,0 +1,23 @@
+.explanation-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.empty-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.projects-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.table-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pointer {
+    cursor: pointer;
+}
