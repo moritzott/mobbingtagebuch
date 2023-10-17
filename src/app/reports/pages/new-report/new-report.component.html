@@ -12,45 +12,177 @@
     <!-- the F O R M -->
     <form (ngSubmit)="onSubmit(reportForm)" #reportForm="ngForm">
         <div class="form-container is-vcentered mt-5">
-            <!-- the new person name -->
+            <!-- the date of the report -->
             <div class="field">
-                <label class="label">Vorname</label>
+                <label class="label">Datum des Vorfalls</label>
                 <div class="control">
                     <input
                         class="input"
-                        type="text"
-                        name="firstName"
-                        id="firstName"
+                        type="date"
+                        name="date"
+                        id="date"
                         placeholder="Text input"
-                        [(ngModel)]="firstname"
-                        #firstName="ngModel"
+                        [(ngModel)]="date"
+                        #dateOfReport="ngModel"
                         required
                         [ngClass]="{
-                            'is-danger': firstName.dirty && firstName.invalid
+                            'is-danger':
+                                dateOfReport.dirty && dateOfReport.invalid
                         }"
                     />
                 </div>
-                <!-- info text that the name is required -->
+                <!-- info text that the date is required -->
                 <p
-                    *ngIf="firstName.dirty && firstName.invalid"
+                    *ngIf="dateOfReport.dirty && dateOfReport.invalid"
                     class="help is-danger"
                 >
-                    A firstname is required.
+                    Ein Datum muss angegeben werden.
                 </p>
             </div>
 
-
-
-            <!-- the optional project description -->
+            <!-- the time of the report -->
             <div class="field">
-                <label class="label">Beschreibung (optional)</label>
+                <label class="label">Uhrzeit des Vorfalls</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="time"
+                        name="time"
+                        id="time"
+                        placeholder="Text input"
+                        [(ngModel)]="time"
+                        #timeOfReport="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger':
+                                timeOfReport.dirty && timeOfReport.invalid
+                        }"
+                    />
+                </div>
+                <!-- info text that the time is required -->
+                <p
+                    *ngIf="timeOfReport.dirty && timeOfReport.invalid"
+                    class="help is-danger"
+                >
+                    Eine Uhrzeit muss angegeben werden.
+                </p>
+            </div>
+
+            <!-- the optional witnesses -->
+            <div class="field">
+                <label class="label">Zeugen</label>
+                <label *ngFor="let person of persons" class="checkbox mx-2 my-2">
+                    <input type="checkbox" [value]="person" (change)="toggleWitnesses(person)"  />
+                    {{ person.firstname }} {{ person.lastname }}
+                </label>
+            </div>
+
+            <!-- the optional involved -->
+            <div class="field">
+                <label class="label">Beteiligte</label>
+                <label *ngFor="let person of persons" class="checkbox mx-2 my-2">
+                    <input type="checkbox" [value]="person" (change)="toggleInvolved(person)" />
+                    {{ person.firstname }} {{ person.lastname }}
+                </label>
+            </div>
+
+            <!-- the optional proofs description -->
+            <div class="field">
+                <label class="label">Beweise</label>
                 <div class="control">
                     <textarea
                         class="textarea"
                         placeholder="Textarea"
-                        id="projectDescription"
-                        name="projectDescription"
-                        [(ngModel)]="projectDescription"
+                        id="proofs"
+                        name="proofs"
+                        [(ngModel)]="proofs"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- what happenend -->
+            <div class="field">
+                <label class="label">Was ist passiert?</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="whatHappened"
+                        name="whatHappened"
+                        [(ngModel)]="whatHappened"
+                        #whatHappendInReport="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger':
+                                whatHappendInReport.dirty &&
+                                whatHappendInReport.invalid
+                        }"
+                    ></textarea>
+                </div>
+                <!-- info text that the section is required -->
+                <p
+                    *ngIf="
+                        whatHappendInReport.dirty && whatHappendInReport.invalid
+                    "
+                    class="help is-danger"
+                >
+                    Dieses Feld muss angegeben werden.
+                </p>
+            </div>
+
+
+            <!-- the optional impact description -->
+            <div class="field">
+                <label class="label">Auswirkungen</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="impacts"
+                        name="impacts"
+                        [(ngModel)]="impacts"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional reaction description -->
+            <div class="field">
+                <label class="label">Reaktion</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="reaction"
+                        name="reaction"
+                        [(ngModel)]="reaction"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional consequences description -->
+            <div class="field">
+                <label class="label">Konsequenzen</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="consequences"
+                        name="consequences"
+                        [(ngModel)]="consequences"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional relfexion description -->
+            <div class="field">
+                <label class="label">Reflexion</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="reflexion"
+                        name="reflexion"
+                        [(ngModel)]="reflexion"
                     ></textarea>
                 </div>
             </div>

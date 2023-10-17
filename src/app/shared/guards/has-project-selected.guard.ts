@@ -1,7 +1,8 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { ProjectService } from '../services/project.service';
-import { Project } from '../interfaces/project';
+import { Project } from '../interfaces/project'
+import { Subject, map, takeUntil } from 'rxjs';
 
 /**
  * This route guard check if a project is selected or not.
@@ -14,13 +15,15 @@ export const hasProjectSelectedGuard: CanActivateFn = (route, state) => {
     const router = inject(Router);
     const projectService = inject(ProjectService);
 
-    const selectedProject: Project | undefined =
-        projectService.getSelectedProject().value;
+    return projectService.getSelectedProject().pipe(
+        map((selectedProject) => {
+            if (selectedProject === undefined) {
+                router.navigateByUrl('errors/no-project');
+                return false;
+            } else {
+                return true;
+            }
+        })
 
-    if (selectedProject === undefined) {
-        router.navigateByUrl('errors/no-project');
-        return false;
-    } else {
-        return true;
-    }
+    );
 };
