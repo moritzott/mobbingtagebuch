@@ -8,6 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ReportService {
     private reports: Report[] = [];
     private reportsSubject$ = new BehaviorSubject<Report[]>([]);
+    private selectedReport: Report | undefined = undefined;
+    private selectedReportSubject$ = new BehaviorSubject<Report | undefined>(undefined);
 
     getReports(): Observable<Report[]> {
         return this.reportsSubject$.asObservable();
@@ -31,6 +33,22 @@ export class ReportService {
     deleteReport(reportId: string): void {
         this.reports = this.reports.filter((report) => report.id !== reportId);
         this.reportsSubject$.next(this.reports);
+
+        // remove selected report if the report to be removed is the currently selected one:
+        const deletedPersonWasSelectedPerson: boolean = this.reports.some((report) => report === this.selectedReport)
+        if (deletedPersonWasSelectedPerson === false) {
+            this.selectedReport = undefined;
+            this.selectedReportSubject$.next(this.selectedReport);
+        }
+    }
+
+    selectReport(report: Report): void {
+        this.selectedReport = report;
+        this.selectedReportSubject$.next(this.selectedReport);
+    }
+
+    getSelectedReport(): Observable<Report | undefined> {
+        return this.selectedReportSubject$.asObservable();
     }
 
     updateProjectReports(newReports: Report[]): void {
