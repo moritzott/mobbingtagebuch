@@ -8,6 +8,7 @@ import { SomethingWentWrongComponent } from './pages/something-went-wrong/someth
 import { CustomErrorComponent } from './pages/custom-error/custom-error.component';
 import { NoProjectSelectedComponent } from './pages/no-project-selected/no-project-selected.component';
 import { RouterModule } from '@angular/router';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 
 
@@ -20,6 +21,7 @@ import { RouterModule } from '@angular/router';
     SomethingWentWrongComponent,
     CustomErrorComponent,
     NoProjectSelectedComponent,
+    TruncatePipe,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { RouterModule } from '@angular/router';
     SomethingWentWrongComponent,
     CustomErrorComponent,
     NoProjectSelectedComponent,
+    TruncatePipe
   ]
 })
 export class SharedModule { }
