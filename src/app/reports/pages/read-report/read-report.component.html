@@ -1,0 +1,162 @@
+<div class="animate-left-in">
+    <div class="explanation-container mt-6">
+        <!-- title with description -->
+        <h1 class="title">Bericht lesen</h1>
+        <div class="block"></div>
+    </div>
+    <!-- the F O R M -->
+    <form #reportForm="ngForm" *ngIf="report !== undefined">
+        <div class="form-container is-vcentered mt-5">
+            <!-- the date of the report -->
+            <div class="field">
+                <label class="label">Datum des Vorfalls</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="date"
+                        name="date"
+                        id="date"
+                        placeholder="Text input"
+                        [(ngModel)]="report.date"
+                        readonly
+                    />
+                </div>
+            </div>
+
+            <!-- the time of the report -->
+            <div class="field">
+                <label class="label">Uhrzeit des Vorfalls</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="time"
+                        name="time"
+                        id="time"
+                        placeholder="Text input"
+                        [(ngModel)]="report.time"
+                        readonly
+                    />
+                </div>
+            </div>
+
+            <!-- the optional witnesses -->
+            <div class="field" *ngIf="report.witnesses?.length !== 0">
+                <label class="label">Zeugen</label>
+                <p *ngFor="let person of report.witnesses">
+                    {{ person.firstname }} {{ person.lastname }}
+                </p>
+            </div>
+
+            <!-- the optional involved -->
+            <div class="field" *ngIf="report.involved?.length !== 0">
+                <label class="label">Beteiligte</label>
+                <p *ngFor="let person of report.involved">
+                    {{ person.firstname }} {{ person.lastname }}
+                </p>
+            </div>
+
+            <!-- the optional proofs description -->
+            <div class="field">
+                <label class="label">Beweise</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="proofs"
+                        name="proofs"
+                        [(ngModel)]="report.proofs"
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- what happenend -->
+            <div class="field">
+                <label class="label">Was ist passiert?</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="whatHappened"
+                        name="whatHappened"
+                        [(ngModel)]="report.whatHappened"
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional impact description -->
+            <div class="field">
+                <label class="label">Auswirkungen</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="impacts"
+                        name="impacts"
+                        [(ngModel)]="report.impacts"
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional reaction description -->
+            <div class="field">
+                <label class="label">Reaktion</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="reaction"
+                        name="reaction"
+                        [(ngModel)]="report.reaction"
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional consequences description -->
+            <div class="field">
+                <label class="label">Konsequenzen</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="consequences"
+                        name="consequences"
+                        [(ngModel)]="report.consequences"
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional relfexion description -->
+            <div class="field">
+                <label class="label">Reflexion</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="reflexion"
+                        name="reflexion"
+                        [(ngModel)]="report.reflexion"
+                        readonly
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the OK button -->
+            <div class="field mt-4 is-grouped is-flex is-justify-content-end">
+                <div class="control">
+                    <button
+                        type="submit"
+                        (click)="onOk()"
+                        class="button is-primary"
+                    >
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
