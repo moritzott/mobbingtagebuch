@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { NewReportComponent } from './pages/new-report/new-report.component';
 import { EditReportComponent } from './pages/edit-report/edit-report.component';
+import { ReadReportComponent } from './pages/read-report/read-report.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'overview', pathMatch: 'full' },
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path: 'edit',
         component: EditReportComponent
+    },
+    {
+        path: 'read',
+        component: ReadReportComponent
     }
 ];
 

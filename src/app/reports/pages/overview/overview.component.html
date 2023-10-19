@@ -20,7 +20,7 @@
                 </tr>
                 <tr
                     *ngFor="let report of reports"
-                    [ngClass]="{ 'is-selected': selectedReport === report }"
+                    class="pointer"
                 >
                     <td class="pt-4">{{ report.date | date:'dd.MM.yy' }}</td>
                     <td class="pt-4">{{ report.time }} Uhr</td>
