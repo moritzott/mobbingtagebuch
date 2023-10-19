@@ -7,13 +7,15 @@ import { OverviewComponent } from './pages/overview/overview.component';
 import { NewReportComponent } from './pages/new-report/new-report.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { EditReportComponent } from './pages/edit-report/edit-report.component';
 
 
 @NgModule({
   declarations: [
     ReportsComponent,
     OverviewComponent,
-    NewReportComponent
+    NewReportComponent,
+    EditReportComponent
   ],
   imports: [
     CommonModule,
