@@ -1,0 +1,226 @@
+<div class="animate-left-in">
+    <div class="explanation-container mt-6">
+        <!-- title with description -->
+        <h1 class="title">Bericht bearbeiten</h1>
+        <div class="block"></div>
+    </div>
+    <!-- the F O R M -->
+    <form
+        (ngSubmit)="onSubmit(reportForm)"
+        #reportForm="ngForm"
+        *ngIf="report !== undefined"
+    >
+        <div class="form-container is-vcentered mt-5">
+            <!-- the date of the report -->
+            <div class="field">
+                <label class="label">Datum des Vorfalls</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="date"
+                        name="date"
+                        id="date"
+                        placeholder="Text input"
+                        [(ngModel)]="report.date"
+                        #dateOfReport="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger':
+                                dateOfReport.dirty && dateOfReport.invalid
+                        }"
+                    />
+                </div>
+                <!-- info text that the date is required -->
+                <p
+                    *ngIf="dateOfReport.dirty && dateOfReport.invalid"
+                    class="help is-danger"
+                >
+                    Ein Datum muss angegeben werden.
+                </p>
+            </div>
+
+            <!-- the time of the report -->
+            <div class="field">
+                <label class="label">Uhrzeit des Vorfalls</label>
+                <div class="control">
+                    <input
+                        class="input"
+                        type="time"
+                        name="time"
+                        id="time"
+                        placeholder="Text input"
+                        [(ngModel)]="report.time"
+                        #timeOfReport="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger':
+                                timeOfReport.dirty && timeOfReport.invalid
+                        }"
+                    />
+                </div>
+                <!-- info text that the time is required -->
+                <p
+                    *ngIf="timeOfReport.dirty && timeOfReport.invalid"
+                    class="help is-danger"
+                >
+                    Eine Uhrzeit muss angegeben werden.
+                </p>
+            </div>
+
+            <!-- the optional witnesses -->
+            <div class="field">
+                <label class="label">Zeugen</label>
+                <label
+                    *ngFor="let person of persons"
+                    class="checkbox mx-2 my-2"
+                >
+                    <input
+                        type="checkbox"
+                        [value]="person"
+                        (change)="toggleWitnesses(person)"
+                        [checked]="checkIfPersonIsInArray(report.witnesses, person)"
+                    />
+                    {{ person.firstname }} {{ person.lastname }}
+                </label>
+            </div>
+
+            <!-- the optional involved -->
+            <div class="field">
+                <label class="label">Beteiligte</label>
+                <label
+                    *ngFor="let person of persons"
+                    class="checkbox mx-2 my-2"
+                >
+                    <input
+                        type="checkbox"
+                        [value]="person"
+                        (change)="toggleInvolved(person)"
+                        [checked]="checkIfPersonIsInArray(report.involved, person)"
+                    />
+                    {{ person.firstname }} {{ person.lastname }}
+                </label>
+            </div>
+
+            <!-- the optional proofs description -->
+            <div class="field">
+                <label class="label">Beweise</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="proofs"
+                        name="proofs"
+                        [(ngModel)]="report.proofs"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- what happenend -->
+            <div class="field">
+                <label class="label">Was ist passiert?</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="whatHappened"
+                        name="whatHappened"
+                        [(ngModel)]="report.whatHappened"
+                        #whatHappendInReport="ngModel"
+                        required
+                        [ngClass]="{
+                            'is-danger':
+                                whatHappendInReport.dirty &&
+                                whatHappendInReport.invalid
+                        }"
+                    ></textarea>
+                </div>
+                <!-- info text that the section is required -->
+                <p
+                    *ngIf="
+                        whatHappendInReport.dirty && whatHappendInReport.invalid
+                    "
+                    class="help is-danger"
+                >
+                    Dieses Feld muss angegeben werden.
+                </p>
+            </div>
+
+            <!-- the optional impact description -->
+            <div class="field">
+                <label class="label">Auswirkungen</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="impacts"
+                        name="impacts"
+                        [(ngModel)]="report.impacts"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional reaction description -->
+            <div class="field">
+                <label class="label">Reaktion</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="reaction"
+                        name="reaction"
+                        [(ngModel)]="report.reaction"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional consequences description -->
+            <div class="field">
+                <label class="label">Konsequenzen</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="consequences"
+                        name="consequences"
+                        [(ngModel)]="report.consequences"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the optional relfexion description -->
+            <div class="field">
+                <label class="label">Reflexion</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        placeholder="Textarea"
+                        id="reflexion"
+                        name="reflexion"
+                        [(ngModel)]="report.reflexion"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- the cancel and submit button -->
+            <div class="field mt-4 is-grouped is-flex is-justify-content-end">
+                <div class="control">
+                    <button
+                        routerLink="/reports/overview"
+                        class="button is-primary is-light"
+                    >
+                        Abbrechen
+                    </button>
+                </div>
+                <div class="control">
+                    <button
+                        type="submit"
+                        [disabled]="reportForm.form.invalid"
+                        class="button is-primary"
+                    >
+                        Aktualisieren
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
