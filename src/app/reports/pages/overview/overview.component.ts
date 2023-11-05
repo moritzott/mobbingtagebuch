@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Report } from 'src/app/shared/interfaces/report';
+import { ProjectService } from 'src/app/shared/services/project.service';
 import { ReportService } from 'src/app/shared/services/report.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     selectedReport: Report | undefined = undefined;
     selectedReportSubscription$!: Subscription;
 
-    constructor(private reportService: ReportService, private router: Router) {}
+    constructor(private reportService: ReportService, private router: Router, private projectService: ProjectService) {}
 
     ngOnInit(): void {
         this.reportsSubscription$ = this.reportService
@@ -34,6 +35,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
     deleteReport(id: string): void {
         this.reportService.deleteReport(id);
+        this.projectService.updateProjectReports(this.reports);
     }
 
     editReport(report: Report): void {

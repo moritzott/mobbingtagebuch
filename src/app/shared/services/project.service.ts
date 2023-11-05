@@ -3,6 +3,8 @@ import { Project } from '../interfaces/project';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { PersonService } from './person.service';
 import { ReportService } from './report.service';
+import { Person } from '../interfaces/person';
+import { Report } from '../interfaces/report';
 
 @Injectable({
     providedIn: 'root',
@@ -36,6 +38,20 @@ export class ProjectService {
         if (index !== -1) {
             this.projects[index] = updatedProject;
             this.projectsSubject$.next(this.projects);
+        }
+    }
+
+    updateProjectPeople(newPeople: Person[]): void {
+        if(this.selectedProject !== undefined){
+            this.selectedProject.people = newPeople;
+            this.selectedProject$.next(this.selectedProject);
+        }
+    }
+
+    updateProjectReports(newReports: Report[]): void {
+        if(this.selectedProject !== undefined){
+            this.selectedProject.reports = newReports;
+            this.selectedProject$.next(this.selectedProject);
         }
     }
 
