@@ -1,1 +1,26 @@
-<p>file works!</p>
+<div class="animate-right-in">
+    <div class="explanation-container mt-6">
+        <h1 class="title">Export in eine Datei</h1>
+        <div class="block">
+            <div *ngIf="projects.length === 0">
+                <p>
+                    Die Daten werden vorbereitet und stehen dann zum
+                    Herunterladen als Datei bereit.
+                </p>
+                <div class="is-flex is-justify-content-center">
+                    <button class="button is-primary is-loading">
+                        Loading
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="projects.length > 0">
+                <div class="is-flex is-justify-content-center">
+                    <a #downloadLink class="button is-primary">
+                        <span class="material-icons"> download </span>
+                        Herunterladen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
