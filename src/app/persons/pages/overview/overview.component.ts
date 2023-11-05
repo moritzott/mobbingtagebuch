@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Person } from 'src/app/shared/interfaces/person';
 import { PersonService } from 'src/app/shared/services/person.service';
+import { ProjectService } from 'src/app/shared/services/project.service';
 
 @Component({
   selector: 'app-overview',
@@ -17,7 +18,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
   selectedPerson: Person | undefined = undefined;
   selectedPersonSubscription$!: Subscription;
   
-  constructor(private router: Router, private personService: PersonService) {}
+  constructor(private router: Router, private personService: PersonService, private projectService: ProjectService) {}
   
   ngOnInit(): void {
     this.personsSubscription$ = this.personService.getPeople().subscribe(persons => this.persons = persons)
@@ -39,6 +40,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   deletePerson(id: string): void {
     this.personService.deletePerson(id);
+    this.projectService.updateProjectPeople(this.persons);
   }
 
   selectPerson(person: Person): void {

@@ -30,6 +30,7 @@ export class PersonService {
 
     deletePerson(personId: string): void {
         this.people = this.people.filter((p) => p.id !== personId);
+        console.log(this.people);
         this.peopleSubject$.next([...this.people]);
 
         // remove selected person if the person to be removed is the currently selected one:
@@ -51,6 +52,7 @@ export class PersonService {
     }
 
     updateProjectPeople(newPeople: Person[]): void {
+        console.log('newPeople', newPeople);
         this.people = newPeople; // Aktualisiere den Personen-Array
         this.peopleSubject$.next(this.people); // Aktualisiere das BehaviorSubject
     }
