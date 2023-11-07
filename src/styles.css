@@ -3,3 +3,15 @@
 
 /* Import animations */
 @import './assets/css/animations.css';
+
+/*+ Supports weights 200-900 */
+@import '@fontsource-variable/source-sans-3';
+
+body,
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: 'Source Sans 3 Variable', monospace;
+}
