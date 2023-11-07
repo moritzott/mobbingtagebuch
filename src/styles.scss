@@ -1,3 +1,8 @@
+@charset "utf-8";
+
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+
 /* You can add global styles to this file, and also import other style files */
 @import 'material-icons/iconfont/material-icons.css';
 
@@ -7,6 +12,9 @@
 /*+ Supports weights 200-900 */
 @import '@fontsource-variable/source-sans-3';
 
+// Override desired variables
+$primary: darkblue;   
+
 body,
 button,
 input,
@@ -15,3 +23,7 @@ select,
 textarea {
     font-family: 'Source Sans 3 Variable', monospace;
 }
+
+
+/* import bulma css */
+@import "../node_modules/bulma/bulma";

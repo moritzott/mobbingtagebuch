@@ -10,7 +10,7 @@ import { ReportService } from 'src/app/shared/services/report.service';
 @Component({
     selector: 'app-edit-report',
     templateUrl: './edit-report.component.html',
-    styleUrls: ['./edit-report.component.css'],
+    styleUrls: ['./edit-report.component.scss'],
 })
 export class EditReportComponent implements OnInit, OnDestroy {
     report: Report | undefined = undefined;

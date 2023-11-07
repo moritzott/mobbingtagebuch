@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-persons',
   templateUrl: './persons.component.html',
-  styleUrls: ['./persons.component.css']
+  styleUrls: ['./persons.component.scss']
 })
 export class PersonsComponent {
 

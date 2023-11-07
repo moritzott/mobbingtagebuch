@@ -11,7 +11,7 @@ import { ProjectService } from 'src/app/shared/services/project.service';
 @Component({
     selector: 'app-new-project',
     templateUrl: './new-project.component.html',
-    styleUrls: ['./new-project.component.css'],
+    styleUrls: ['./new-project.component.scss'],
 })
 export class NewProjectComponent {
     projectName: string = '';

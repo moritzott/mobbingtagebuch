@@ -8,7 +8,7 @@ import { ProjectService } from 'src/app/shared/services/project.service';
 @Component({
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
-  styleUrls: ['./edit-project.component.css']
+  styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit, OnDestroy {
 

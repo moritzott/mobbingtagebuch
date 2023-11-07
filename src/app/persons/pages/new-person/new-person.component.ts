@@ -8,7 +8,7 @@ import { PersonService } from 'src/app/shared/services/person.service';
 @Component({
   selector: 'app-new-person',
   templateUrl: './new-person.component.html',
-  styleUrls: ['./new-person.component.css']
+  styleUrls: ['./new-person.component.scss']
 })
 export class NewPersonComponent {
 
