@@ -7,7 +7,7 @@ import { ProjectService } from 'src/app/shared/services/project.service';
 @Component({
   selector: 'app-read-project',
   templateUrl: './read-project.component.html',
-  styleUrls: ['./read-project.component.css']
+  styleUrls: ['./read-project.component.scss']
 })
 export class ReadProjectComponent {
   constructor(private projectService: ProjectService, private router: Router) { }

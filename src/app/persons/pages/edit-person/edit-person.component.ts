@@ -8,7 +8,7 @@ import { PersonService } from 'src/app/shared/services/person.service';
 @Component({
   selector: 'app-edit-person',
   templateUrl: './edit-person.component.html',
-  styleUrls: ['./edit-person.component.css']
+  styleUrls: ['./edit-person.component.scss']
 })
 export class EditPersonComponent implements OnInit, OnDestroy {
 

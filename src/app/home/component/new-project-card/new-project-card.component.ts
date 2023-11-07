@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-new-project-card',
     templateUrl: './new-project-card.component.html',
-    styleUrls: ['./new-project-card.component.css'],
+    styleUrls: ['./new-project-card.component.scss'],
 })
 export class NewProjectCardComponent {
     projectName: string = '';

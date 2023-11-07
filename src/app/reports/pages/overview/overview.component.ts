@@ -8,7 +8,7 @@ import { ReportService } from 'src/app/shared/services/report.service';
 @Component({
     selector: 'app-overview',
     templateUrl: './overview.component.html',
-    styleUrls: ['./overview.component.css'],
+    styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent implements OnInit, OnDestroy {
     reports!: Report[];

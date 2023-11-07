@@ -7,7 +7,7 @@ import { PersonService } from 'src/app/shared/services/person.service';
 @Component({
   selector: 'app-read-person',
   templateUrl: './read-person.component.html',
-  styleUrls: ['./read-person.component.css']
+  styleUrls: ['./read-person.component.scss']
 })
 export class ReadPersonComponent implements OnInit, OnDestroy {
 

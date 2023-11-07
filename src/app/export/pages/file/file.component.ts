@@ -6,7 +6,7 @@ import { ProjectService } from 'src/app/shared/services/project.service';
 @Component({
   selector: 'app-file',
   templateUrl: './file.component.html',
-  styleUrls: ['./file.component.css']
+  styleUrls: ['./file.component.scss']
 })
 export class FileComponent implements OnInit, OnDestroy {
   @ViewChild('downloadLink') downloadLink! : ElementRef<HTMLAnchorElement>;

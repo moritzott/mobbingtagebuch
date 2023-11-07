@@ -10,7 +10,7 @@ import { ReportService } from 'src/app/shared/services/report.service';
 @Component({
   selector: 'app-read-report',
   templateUrl: './read-report.component.html',
-  styleUrls: ['./read-report.component.css']
+  styleUrls: ['./read-report.component.scss']
 })
 export class ReadReportComponent implements OnInit, OnDestroy {
   report: Report | undefined = undefined;

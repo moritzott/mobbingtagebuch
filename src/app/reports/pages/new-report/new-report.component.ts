@@ -12,7 +12,7 @@ import { ReportService } from 'src/app/shared/services/report.service';
 @Component({
   selector: 'app-new-report',
   templateUrl: './new-report.component.html',
-  styleUrls: ['./new-report.component.css']
+  styleUrls: ['./new-report.component.scss']
 })
 export class NewReportComponent implements OnInit, OnDestroy {
 
