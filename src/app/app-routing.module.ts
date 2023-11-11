@@ -61,22 +61,22 @@ const routes: Routes = [
             {
                 path: 'not-found',
                 component: NotFoundComponent,
-                title: '404',
+                title: '404 – Mobbingtagebuch',
             },
             {
                 path: 'unspecified-error',
                 component: SomethingWentWrongComponent,
-                title: 'Unknown Error',
+                title: 'Unbekannter Fehler – Mobbingtagebuch',
             },
             {
                 path: 'no-project',
                 component: NoProjectSelectedComponent,
-                title: 'No project selected',
+                title: 'Kein Projekt selektiert – Mobbingtagebuch',
             },
             {
                 path: 'custom-error',
                 component: CustomErrorComponent,
-                title: 'Custom Error',
+                title: 'Custom Error – Mobbingtagebuch',
             },
         ],
     },

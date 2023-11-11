@@ -11,21 +11,25 @@ const routes: Routes = [
     {
         path: 'overview',
         component: OverviewComponent,
+        title: 'Projektübersicht – Mobbingtagebuch',
     },
     {
         path: 'new',
         component: NewProjectComponent,
+        title: 'Neues Projekt – Mobbingtagebuch',
     },
     {
         path: 'edit',
         component: EditProjectComponent,
-        canActivate: [hasProjectSelectedGuard]
+        canActivate: [hasProjectSelectedGuard],
+        title: 'Projekt bearbeiten – Mobbingtagebuch',
     },
     {
         path: 'read',
         component: ReadProjectComponent,
-        canActivate: [hasProjectSelectedGuard]
-    }
+        canActivate: [hasProjectSelectedGuard],
+        title: 'Projektdetails – Mobbingtagebuch',
+    },
 ];
 
 @NgModule({
