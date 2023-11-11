@@ -10,19 +10,23 @@ const routes: Routes = [
     {
         path: 'overview',
         component: OverviewComponent,
+        title: 'Berichtübersicht – Mobbingtagebuch',
     },
     {
         path: 'new',
         component: NewReportComponent,
+        title: 'Neuer Bericht – Mobbingtagebuch',
     },
     {
         path: 'edit',
-        component: EditReportComponent
+        component: EditReportComponent,
+        title: 'Bericht bearbeiten – Mobbingtagebuch',
     },
     {
         path: 'read',
-        component: ReadReportComponent
-    }
+        component: ReadReportComponent,
+        title: 'Berichtdetails – Mobbingtagebuch',
+    },
 ];
 
 @NgModule({

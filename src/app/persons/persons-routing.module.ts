@@ -11,25 +11,29 @@ const routes: Routes = [
     {
         path: 'overview',
         component: OverviewComponent,
+        title: 'Personenübersicht – Mobbingtagebuch',
     },
     {
         path: 'new',
         component: NewPersonComponent,
+        title: 'Neue Person – Mobbingtagebuch',
     },
     {
         path: 'edit',
         component: EditPersonComponent,
-        canActivate: [hasProjectSelectedGuard]
+        canActivate: [hasProjectSelectedGuard],
+        title: 'Person bearbeiten – Mobbingtagebuch',
     },
     {
         path: 'read',
         component: ReadPersonComponent,
-        canActivate: [hasProjectSelectedGuard]
-    }
+        canActivate: [hasProjectSelectedGuard],
+        title: 'Personendetails – Mobbingtagebuch',
+    },
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class PersonsRoutingModule { }
+export class PersonsRoutingModule {}
