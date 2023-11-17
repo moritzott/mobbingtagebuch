@@ -5,6 +5,7 @@ import { PersonService } from './person.service';
 import { ReportService } from './report.service';
 import { Person } from '../interfaces/person';
 import { Report } from '../interfaces/report';
+import { StorageService } from './storage.service';
 
 @Injectable({
     providedIn: 'root',
@@ -19,8 +20,19 @@ export class ProjectService {
 
     constructor(
         private personsService: PersonService,
-        private reportsService: ReportService
-    ) { }
+        private reportsService: ReportService,
+        private storageService: StorageService
+    ) {
+        // load projects from storage if there are projects
+        const projects: undefined | Project[] =
+            this.storageService.getDataFromStorage();
+        if (projects !== undefined) {
+            this.projects = projects;
+            this.projectsSubject$.next(this.projects)
+            console.log('test');
+            
+        }
+    }
 
     getProjects(): Observable<Project[]> {
         return this.projectsSubject$.asObservable();
@@ -29,6 +41,7 @@ export class ProjectService {
     addProject(project: Project): void {
         this.projects.push(project);
         this.projectsSubject$.next([...this.projects]);
+        this.storageService.writeDataToStorage(this.projects);
     }
 
     updateProject(updatedProject: Project): void {
@@ -38,20 +51,22 @@ export class ProjectService {
         if (index !== -1) {
             this.projects[index] = updatedProject;
             this.projectsSubject$.next(this.projects);
+            this.storageService.writeDataToStorage(this.projects);
         }
     }
 
     updateProjectPeople(newPeople: Person[]): void {
-        if(this.selectedProject !== undefined){
+        if (this.selectedProject !== undefined) {
             this.selectedProject.people = newPeople;
             this.selectedProject$.next(this.selectedProject);
         }
     }
 
     updateProjectReports(newReports: Report[]): void {
-        if(this.selectedProject !== undefined){
+        if (this.selectedProject !== undefined) {
             this.selectedProject.reports = newReports;
             this.selectedProject$.next(this.selectedProject);
+            this.storageService.writeDataToStorage(this.projects);
         }
     }
 
@@ -60,11 +75,15 @@ export class ProjectService {
         this.projectsSubject$.next([...this.projects]);
 
         // remove selected project if the project to be removed is the currently selected one:
-        const deletedProjectWasSelectedProject: boolean = this.projects.some((project) => project === this.selectedProject)
+        const deletedProjectWasSelectedProject: boolean = this.projects.some(
+            (project) => project === this.selectedProject
+        );
         if (deletedProjectWasSelectedProject === false) {
             this.selectedProject = undefined;
             this.selectedProject$.next(this.selectedProject);
         }
+
+        this.storageService.writeDataToStorage(this.projects);
     }
 
     getProject(projectId: string): Project | undefined {
