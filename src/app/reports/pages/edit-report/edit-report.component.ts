@@ -3,9 +3,12 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Person } from 'src/app/shared/interfaces/person';
+import { Project } from 'src/app/shared/interfaces/project';
 import { Report } from 'src/app/shared/interfaces/report';
 import { PersonService } from 'src/app/shared/services/person.service';
+import { ProjectService } from 'src/app/shared/services/project.service';
 import { ReportService } from 'src/app/shared/services/report.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
     selector: 'app-edit-report',
@@ -19,10 +22,15 @@ export class EditReportComponent implements OnInit, OnDestroy {
     persons: Person[] = [];
     private personsSubscription$!: Subscription;
 
+    projects!: Project[];
+    projectSubscription$!: Subscription;
+
     constructor(
         private reportService: ReportService,
         private router: Router,
-        public personService: PersonService
+        public personService: PersonService,
+        private projectService: ProjectService,
+        private storageService: StorageService
     ) {}
 
     ngOnInit(): void {
@@ -36,17 +44,23 @@ export class EditReportComponent implements OnInit, OnDestroy {
         this.personsSubscription$ = this.personService
             .getPeople()
             .subscribe((persons) => (this.persons = persons));
+
+        this.projectSubscription$ = this.projectService
+            .getProjects()
+            .subscribe((values) => (this.projects = values));
     }
 
     ngOnDestroy(): void {
         this.reportSubscription$.unsubscribe();
         this.personsSubscription$.unsubscribe();
+        this.projectSubscription$.unsubscribe();
     }
 
     onSubmit(form: NgForm): void {
         if (this.report !== undefined) {
             this.reportService.updateReport(this.report);
             console.log('Neuer report', this.report);
+            this.storageService.writeDataToStorage(this.projects);
 
             this.router.navigate(['reports', 'overview']);
         }

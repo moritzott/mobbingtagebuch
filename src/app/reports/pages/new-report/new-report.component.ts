@@ -5,9 +5,12 @@ import { Router } from '@angular/router';
 import { nanoid } from 'nanoid';
 import { Subscription } from 'rxjs';
 import { Person } from 'src/app/shared/interfaces/person';
+import { Project } from 'src/app/shared/interfaces/project';
 import { Report } from 'src/app/shared/interfaces/report';
 import { PersonService } from 'src/app/shared/services/person.service';
+import { ProjectService } from 'src/app/shared/services/project.service';
 import { ReportService } from 'src/app/shared/services/report.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-new-report',
@@ -18,6 +21,9 @@ export class NewReportComponent implements OnInit, OnDestroy {
 
   persons: Person[] = [];
   private personsSubscription$!: Subscription;
+
+  projects!: Project[];
+  projectSubscription$!: Subscription;
 
   date: Date = new Date();
   time: Time = { hours: 0, minutes: 0 }
@@ -30,14 +36,19 @@ export class NewReportComponent implements OnInit, OnDestroy {
   consequences: string = ""
   reflexion: string = ""
 
-  constructor(private reportService: ReportService, private router: Router, private personService: PersonService) { }
+  constructor(private reportService: ReportService, private router: Router, private personService: PersonService,  private projectService: ProjectService,
+    private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.personsSubscription$ = this.personService.getPeople().subscribe((persons) => this.persons = persons);
+    this.projectSubscription$ = this.projectService
+    .getProjects()
+    .subscribe((values) => (this.projects = values));
   }
 
   ngOnDestroy(): void {
     this.personsSubscription$.unsubscribe();
+    this.projectSubscription$.unsubscribe();
   }
 
   toggleInvolved(person: Person): void {
@@ -86,7 +97,7 @@ export class NewReportComponent implements OnInit, OnDestroy {
     }
 
     this.reportService.addReport(newReport)
-
+    this.storageService.writeDataToStorage(this.projects);
     console.log('Neuer Report', newReport)
 
 
@@ -95,6 +106,7 @@ export class NewReportComponent implements OnInit, OnDestroy {
 
   onSubmit(form: NgForm): void {
     this.createNewReport();
+    
     form.reset();
     this.router.navigateByUrl('reports/overview');
   }
